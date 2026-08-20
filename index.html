@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Stella - Moonlight Designs</title>
+<title>Stella Fall | Moonlight Designs</title>
 
 <style>
 
@@ -24,6 +24,118 @@ body {
     overflow: hidden;
 
     background: transparent;
+}
+
+
+/* =====================================================
+   FALL LEAF LAYER
+===================================================== */
+
+#fall-leaves {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 9000;
+}
+
+
+.fall-leaf {
+    position: absolute;
+
+    top: -70px;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    opacity: .9;
+
+    filter:
+        drop-shadow(
+            0 3px 3px
+            rgba(0,0,0,.18)
+        );
+
+    animation:
+        leafFall
+        linear
+        forwards;
+}
+
+
+/* =====================================================
+   FALLING LEAF MOVEMENT
+===================================================== */
+
+@keyframes leafFall {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate3d(0,-10vh,0)
+            rotate(0deg);
+    }
+
+
+    8% {
+        opacity: .95;
+    }
+
+
+    25% {
+        transform:
+            translate3d(
+                var(--sway1),
+                25vh,
+                0
+            )
+            rotate(110deg);
+    }
+
+
+    50% {
+        transform:
+            translate3d(
+                var(--sway2),
+                55vh,
+                0
+            )
+            rotate(230deg);
+    }
+
+
+    75% {
+        transform:
+            translate3d(
+                var(--sway3),
+                82vh,
+                0
+            )
+            rotate(350deg);
+    }
+
+
+    100% {
+        opacity: .15;
+
+        transform:
+            translate3d(
+                var(--sway4),
+                115vh,
+                0
+            )
+            rotate(520deg);
+    }
+
 }
 
 
@@ -77,15 +189,17 @@ body {
 
     filter:
         drop-shadow(
-            0 6px 10px
-            rgba(0,0,0,.25)
+            0 7px 10px
+            rgba(0,0,0,.28)
         )
+
         drop-shadow(
-            0 0 12px
+            0 0 13px
             rgba(151,75,255,.55)
         );
 
     animation:
+
         stellaFlyIn
         3.5s
         cubic-bezier(.22,.8,.3,1)
@@ -100,7 +214,7 @@ body {
 
 
 /* =====================================================
-   STELLA FLYS INTO SCREEN
+   STELLA FLY-IN
 ===================================================== */
 
 @keyframes stellaFlyIn {
@@ -113,7 +227,6 @@ body {
             translate(-110vw,-35vh)
             rotate(-20deg)
             scale(.35);
-
     }
 
 
@@ -180,7 +293,7 @@ body {
 
         transform:
             translate(0,0)
-            rotate(0deg)
+            rotate(0)
             scale(1);
 
     }
@@ -189,7 +302,7 @@ body {
 
 
 /* =====================================================
-   FLOAT AFTER LANDING
+   FLOATING STELLA
 ===================================================== */
 
 @keyframes floatStella {
@@ -216,12 +329,15 @@ body {
 
 
 /* =====================================================
-   CLICK BOUNCE
+   STELLA CLICK REACTION
 ===================================================== */
 
 #stella.clicked {
 
+    opacity: 1;
+
     animation:
+
         stellaClick
         .65s
         ease,
@@ -231,8 +347,6 @@ body {
         ease-in-out
         .65s
         infinite;
-
-    opacity: 1;
 }
 
 
@@ -305,7 +419,7 @@ body {
     right: 175px;
     bottom: 235px;
 
-    width: 220px;
+    width: 225px;
 
     padding: 15px;
 
@@ -314,8 +428,8 @@ body {
     background:
         linear-gradient(
             135deg,
-            #ffffff,
-            #f8efff
+            #fffdf7,
+            #f7edff
         );
 
     color: #35155d;
@@ -333,13 +447,14 @@ body {
 
     font-size: 15px;
 
-    font-weight: bold;
+    font-weight: 800;
 
     line-height: 1.35;
 
     text-align: center;
 
     box-shadow:
+
         0 6px 20px
         rgba(0,0,0,.20),
 
@@ -362,8 +477,6 @@ body {
 }
 
 
-/* SHOW SPEECH BUBBLE */
-
 #stella-bubble.show {
 
     opacity: 1;
@@ -375,9 +488,7 @@ body {
 }
 
 
-/* =====================================================
-   SPEECH BUBBLE TAIL
-===================================================== */
+/* SPEECH BUBBLE TAIL */
 
 #stella-bubble::after {
 
@@ -391,7 +502,7 @@ body {
     width: 24px;
     height: 24px;
 
-    background: #f8efff;
+    background: #f7edff;
 
     border-right:
         3px solid
@@ -403,12 +514,11 @@ body {
 
     transform:
         rotate(45deg);
-
 }
 
 
 /* =====================================================
-   SPARKLES
+   MAGIC SPARKLES
 ===================================================== */
 
 .sparkle {
@@ -465,7 +575,7 @@ body {
 
 
 /* =====================================================
-   HEARTS
+   HEART EFFECT
 ===================================================== */
 
 .stella-heart {
@@ -516,6 +626,61 @@ body {
 
 
 /* =====================================================
+   FALL BURST
+===================================================== */
+
+.leaf-burst {
+
+    position: fixed;
+
+    z-index: 9999999;
+
+    pointer-events: none;
+
+    font-size: 25px;
+
+    animation:
+        leafBurst
+        1.8s
+        ease-out
+        forwards;
+}
+
+
+@keyframes leafBurst {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            translate(0,0)
+            rotate(0deg)
+            scale(.3);
+
+    }
+
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--burstX),
+                var(--burstY)
+            )
+            rotate(
+                var(--burstRotate)
+            )
+            scale(1.25);
+
+    }
+
+}
+
+
+/* =====================================================
    MOBILE
 ===================================================== */
 
@@ -552,11 +717,18 @@ body {
 
     }
 
+
+    .fall-leaf {
+
+        opacity: .75;
+
+    }
+
 }
 
 
 /* =====================================================
-   ACCESSIBILITY
+   REDUCED MOTION
 ===================================================== */
 
 @media (
@@ -572,6 +744,13 @@ body {
 
     }
 
+
+    #fall-leaves {
+
+        display: none;
+
+    }
+
 }
 
 </style>
@@ -583,26 +762,29 @@ body {
 
 
 <!-- ===================================================
+     FALLING LEAVES
+=================================================== -->
+
+<div id="fall-leaves"></div>
+
+
+<!-- ===================================================
      STELLA
 =================================================== -->
 
 <div id="stella-container">
 
 
-    <!-- SPEECH BUBBLE -->
-
     <div id="stella-bubble">
 
         <span id="stella-text">
 
-            Welcome to Moonlight Designs! ✨
+            Welcome to Moonlight Designs! 🍂✨
 
         </span>
 
     </div>
 
-
-    <!-- STELLA IMAGE -->
 
     <img
 
@@ -620,10 +802,6 @@ body {
 
 
 <script>
-
-/* =====================================================
-   STELLA JAVASCRIPT
-===================================================== */
 
 (function () {
 
@@ -650,34 +828,44 @@ const stellaText =
     );
 
 
+const fallContainer =
+    document.getElementById(
+        "fall-leaves"
+    );
+
+
 let bubbleTimer;
 
 
 /* =====================================================
-   STELLA MESSAGES
+   FALL STELLA SAYINGS
 ===================================================== */
 
 const messages = [
 
-    "Welcome to Moonlight Designs! ✨",
+    "Welcome to Moonlight Designs! 🍂✨",
 
     "Hi! I'm Stella! 🦉💜",
 
+    "Fall into something magical! 🍁",
+
+    "Cozy season has arrived! 🍂",
+
     "Come see what's new! 🌙",
 
-    "Let's make something magical! ✨",
+    "Sweater weather & new designs! ☕🍁",
 
     "Psst... have you checked the shop? 👀",
 
-    "New designs are waiting for you! 💫",
+    "Let's make some autumn magic! ✨🍂",
 
-    "Don't forget to check the newest drops! ⭐",
+    "New designs are falling into the shop! 🍁",
 
-    "Need some clipart? I know a place! 😉",
+    "Pumpkin season makes everything better! 🎃",
 
     "You deserve something pretty today! 💜",
 
-    "Thanks for visiting Moonlight Designs! 🌙"
+    "Thanks for visiting Moonlight Designs! 🌙🍂"
 
 ];
 
@@ -733,7 +921,203 @@ function talk() {
 
 
 /* =====================================================
-   SPARKLES
+   CREATE FALLING LEAF
+===================================================== */
+
+function createFallLeaf() {
+
+
+    const leafSymbols = [
+
+        "🍂",
+        "🍁",
+        "🍃"
+
+    ];
+
+
+    const leaf =
+        document.createElement(
+            "span"
+        );
+
+
+    leaf.className =
+        "fall-leaf";
+
+
+    leaf.textContent =
+        leafSymbols[
+            Math.floor(
+                Math.random()
+                *
+                leafSymbols.length
+            )
+        ];
+
+
+    /* Horizontal starting position */
+
+    leaf.style.left =
+        (
+            Math.random()
+            *
+            100
+        )
+        +
+        "vw";
+
+
+    /* Random size */
+
+    leaf.style.fontSize =
+        (
+            14
+            +
+            Math.random()
+            *
+            26
+        )
+        +
+        "px";
+
+
+    /* Random fall speed */
+
+    const fallTime =
+        7
+        +
+        Math.random()
+        *
+        8;
+
+
+    leaf.style.animationDuration =
+        fallTime
+        +
+        "s";
+
+
+    /* Random swaying */
+
+    leaf.style.setProperty(
+
+        "--sway1",
+
+        (
+            Math.random()
+            *
+            100
+            -
+            50
+        )
+        +
+        "px"
+
+    );
+
+
+    leaf.style.setProperty(
+
+        "--sway2",
+
+        (
+            Math.random()
+            *
+            150
+            -
+            75
+        )
+        +
+        "px"
+
+    );
+
+
+    leaf.style.setProperty(
+
+        "--sway3",
+
+        (
+            Math.random()
+            *
+            120
+            -
+            60
+        )
+        +
+        "px"
+
+    );
+
+
+    leaf.style.setProperty(
+
+        "--sway4",
+
+        (
+            Math.random()
+            *
+            180
+            -
+            90
+        )
+        +
+        "px"
+
+    );
+
+
+    fallContainer.appendChild(
+        leaf
+    );
+
+
+    /* Remove after animation */
+
+    setTimeout(
+        function () {
+
+            leaf.remove();
+
+        },
+
+        fallTime
+        *
+        1000
+    );
+
+}
+
+
+/* =====================================================
+   CONTINUOUS FALLING LEAVES
+===================================================== */
+
+setInterval(
+    createFallLeaf,
+    550
+);
+
+
+/* Start with leaves already falling */
+
+for (
+    let i = 0;
+    i < 10;
+    i++
+) {
+
+    setTimeout(
+        createFallLeaf,
+        i * 180
+    );
+
+}
+
+
+/* =====================================================
+   STELLA SPARKLES
 ===================================================== */
 
 function makeSparkles(
@@ -744,14 +1128,11 @@ function makeSparkles(
     const icons = [
 
         "✨",
-
         "⭐",
-
         "💜",
-
         "🌙",
-
-        "✦"
+        "✦",
+        "🍂"
 
     ];
 
@@ -842,7 +1223,7 @@ function makeSparkles(
 
 
 /* =====================================================
-   HEART BURST
+   PURPLE HEARTS
 ===================================================== */
 
 function makeHearts() {
@@ -931,6 +1312,160 @@ function makeHearts() {
 
 
 /* =====================================================
+   FALL LEAF BURST AROUND STELLA
+===================================================== */
+
+function leafBurst(
+    amount
+) {
+
+
+    const symbols = [
+
+        "🍂",
+        "🍁",
+        "🍃"
+
+    ];
+
+
+    const rect =
+        stella.getBoundingClientRect();
+
+
+    const centerX =
+        rect.left
+        +
+        rect.width / 2;
+
+
+    const centerY =
+        rect.top
+        +
+        rect.height / 2;
+
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+
+        const leaf =
+            document.createElement(
+                "span"
+            );
+
+
+        leaf.className =
+            "leaf-burst";
+
+
+        leaf.textContent =
+            symbols[
+                Math.floor(
+                    Math.random()
+                    *
+                    symbols.length
+                )
+            ];
+
+
+        leaf.style.left =
+            centerX
+            +
+            "px";
+
+
+        leaf.style.top =
+            centerY
+            +
+            "px";
+
+
+        const x =
+            Math.random()
+            *
+            260
+            -
+            130;
+
+
+        const y =
+            Math.random()
+            *
+            220
+            -
+            150;
+
+
+        const rotate =
+            Math.random()
+            *
+            720
+            -
+            360;
+
+
+        leaf.style.setProperty(
+
+            "--burstX",
+
+            x + "px"
+
+        );
+
+
+        leaf.style.setProperty(
+
+            "--burstY",
+
+            y + "px"
+
+        );
+
+
+        leaf.style.setProperty(
+
+            "--burstRotate",
+
+            rotate + "deg"
+
+        );
+
+
+        leaf.style.animationDelay =
+            (
+                Math.random()
+                *
+                .25
+            )
+            +
+            "s";
+
+
+        document.body.appendChild(
+            leaf
+        );
+
+
+        setTimeout(
+            function () {
+
+                leaf.remove();
+
+            },
+
+            2200
+        );
+
+    }
+
+}
+
+
+/* =====================================================
    CLICK STELLA
 ===================================================== */
 
@@ -939,7 +1474,7 @@ stella.addEventListener(
     function () {
 
 
-        /* Restart click animation */
+        /* Restart click reaction */
 
         stella.classList.remove(
             "clicked"
@@ -954,26 +1489,31 @@ stella.addEventListener(
         );
 
 
-        /* Stella talks */
+        /* Talk */
 
         talk();
 
 
-        /* Magic effects */
+        /* Fall magic */
 
         makeSparkles(
-            12
+            10
         );
 
 
         makeHearts();
+
+
+        leafBurst(
+            12
+        );
 
     }
 );
 
 
 /* =====================================================
-   FIRST WELCOME
+   STELLA ARRIVES
 ===================================================== */
 
 window.addEventListener(
@@ -982,10 +1522,8 @@ window.addEventListener(
 
 
         /*
-           Stella flies for 3.5 seconds.
-
-           Wait until she lands before
-           showing the welcome message.
+          Stella's fly-in lasts 3.5 sec.
+          Wait until she lands.
         */
 
 
@@ -993,11 +1531,22 @@ window.addEventListener(
             function () {
 
 
+                /* Welcome */
+
                 talk();
 
 
+                /* Purple/gold magic */
+
                 makeSparkles(
                     12
+                );
+
+
+                /* BIG FALL LANDING BURST */
+
+                leafBurst(
+                    20
                 );
 
 
@@ -1011,7 +1560,7 @@ window.addEventListener(
 
 
 /* =====================================================
-   IDLE SPARKLES
+   IDLE STELLA MAGIC
 ===================================================== */
 
 setInterval(
@@ -1041,6 +1590,36 @@ setInterval(
 
 
 /* =====================================================
+   OCCASIONAL LEAF PUFF
+===================================================== */
+
+setInterval(
+    function () {
+
+
+        if (
+            stella.complete
+            &&
+            stella.naturalWidth
+            >
+            0
+        ) {
+
+
+            leafBurst(
+                4
+            );
+
+        }
+
+
+    },
+
+    18000
+);
+
+
+/* =====================================================
    IMAGE ERROR CHECK
 ===================================================== */
 
@@ -1050,7 +1629,7 @@ stella.addEventListener(
 
 
         console.error(
-            "Stella image failed to load."
+            "Stella.PNG failed to load."
         );
 
 
@@ -1073,5 +1652,4 @@ stella.addEventListener(
 
 
 </body>
-
 </html>
