@@ -5,218 +5,293 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Moonlight Designs — Stella</title>
+<title>Moonlight Designs - Stella</title>
 
 <style>
 
-/* =========================================
-   PAGE — DO NOT BLOCK PAYHIP SCROLLING
-========================================= */
+/* =====================================================
+   PAGE
+   KEEP SCROLLING ENABLED
+===================================================== */
 
 html,
 body {
     margin: 0;
     padding: 0;
+
     width: 100%;
     min-height: 100%;
+
     background: transparent;
+
     overflow-x: hidden;
 }
 
 
-/* =========================================
+/* =====================================================
    MAGICAL SKY LAYER
-========================================= */
+===================================================== */
 
 #magic-sky {
+
     position: fixed;
-    inset: 0;
+
+    top: 0;
+    left: 0;
 
     width: 100vw;
     height: 100vh;
 
-    overflow: hidden;
-
     pointer-events: none;
 
     z-index: 99990;
+
 }
 
 
-/* =========================================
-   FALLING MOONS
-========================================= */
-
-.falling-moon {
-    position: absolute;
-    top: -80px;
-
-    width: var(--size);
-    height: var(--size);
-
-    border-radius: 50%;
-
-    border-right:
-        calc(var(--size) * .18)
-        solid #fff7c7;
-
-    filter:
-        drop-shadow(0 0 5px #ffffff)
-        drop-shadow(0 0 12px #e5c8ff)
-        drop-shadow(0 0 22px #9c68ff);
-
-    opacity: 0;
-
-    animation:
-        moonFall
-        var(--speed)
-        linear
-        forwards;
-}
-
-
-@keyframes moonFall {
-
-    0% {
-        opacity: 0;
-
-        transform:
-            translate3d(0,-80px,0)
-            rotate(-15deg);
-    }
-
-    10% {
-        opacity: .95;
-    }
-
-    30% {
-        transform:
-            translate3d(25px,30vh,0)
-            rotate(5deg);
-    }
-
-    60% {
-        transform:
-            translate3d(-25px,65vh,0)
-            rotate(-10deg);
-    }
-
-    100% {
-        opacity: .15;
-
-        transform:
-            translate3d(35px,115vh,0)
-            rotate(10deg);
-    }
-}
-
-
-/* =========================================
+/* =====================================================
    FALLING STARS
-========================================= */
+===================================================== */
 
 .falling-star {
+
     position: absolute;
+
     top: -50px;
 
-    width: var(--size);
-    height: var(--size);
-
-    pointer-events: none;
-
-    filter:
-        drop-shadow(0 0 4px #ffffff)
-        drop-shadow(0 0 10px #fff4b0)
-        drop-shadow(0 0 18px #b984ff);
-
-    animation:
-        starFall
-        var(--speed)
-        linear
-        forwards;
-}
-
-
-/* Make an actual star shape */
-
-.falling-star::before {
-    content: "✦";
-
-    position: absolute;
-
-    color: #fffbe7;
+    color: #fffbea;
 
     font-size: var(--size);
 
     line-height: 1;
 
+    pointer-events: none;
+
+    text-shadow:
+
+        0 0 4px #ffffff,
+
+        0 0 9px #ffffff,
+
+        0 0 16px #d7b7ff,
+
+        0 0 25px #9d67ff;
+
     animation:
-        starPulse
-        .75s
-        ease-in-out
-        infinite alternate;
+
+        starFall
+        var(--speed)
+        linear
+        forwards;
+
 }
 
 
 @keyframes starFall {
 
     0% {
+
         opacity: 0;
 
         transform:
-            translate3d(0,-60px,0)
-            rotate(0deg);
+
+            translate3d(
+                0,
+                -60px,
+                0
+            )
+
+            rotate(0deg)
+
+            scale(.5);
+
     }
+
 
     8% {
+
         opacity: 1;
+
     }
 
-    35% {
+
+    30% {
+
         transform:
-            translate3d(30px,35vh,0)
-            rotate(120deg);
+
+            translate3d(
+                25px,
+                30vh,
+                0
+            )
+
+            rotate(100deg)
+
+            scale(1);
+
     }
 
-    65% {
+
+    60% {
+
         transform:
-            translate3d(-25px,70vh,0)
-            rotate(250deg);
+
+            translate3d(
+                -25px,
+                65vh,
+                0
+            )
+
+            rotate(230deg)
+
+            scale(.85);
+
     }
+
 
     100% {
+
         opacity: 0;
 
         transform:
-            translate3d(40px,115vh,0)
-            rotate(420deg);
-    }
-}
 
+            translate3d(
+                40px,
+                115vh,
+                0
+            )
 
-@keyframes starPulse {
+            rotate(400deg)
 
-    from {
-        opacity: .45;
-
-        transform:
             scale(.65);
+
     }
 
-    to {
-        opacity: 1;
-
-        transform:
-            scale(1.35);
-    }
 }
 
 
-/* =========================================
-   TWINKLING STARS AROUND SCREEN
-========================================= */
+/* =====================================================
+   FALLING CRESCENT MOONS
+===================================================== */
+
+.falling-moon {
+
+    position: absolute;
+
+    top: -60px;
+
+    width: var(--size);
+    height: var(--size);
+
+    border-radius: 50%;
+
+    box-shadow:
+
+        inset
+        calc(var(--size) * -.22)
+        0
+        0
+        #fff4bd,
+
+        0 0 5px #ffffff,
+
+        0 0 12px #ddc1ff,
+
+        0 0 22px #a46cff;
+
+    pointer-events: none;
+
+    animation:
+
+        moonFall
+        var(--speed)
+        linear
+        forwards;
+
+}
+
+
+@keyframes moonFall {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+
+            translate3d(
+                0,
+                -70px,
+                0
+            )
+
+            rotate(-20deg);
+
+    }
+
+
+    10% {
+
+        opacity: .95;
+
+    }
+
+
+    35% {
+
+        transform:
+
+            translate3d(
+                30px,
+                35vh,
+                0
+            )
+
+            rotate(10deg);
+
+    }
+
+
+    65% {
+
+        transform:
+
+            translate3d(
+                -25px,
+                70vh,
+                0
+            )
+
+            rotate(-12deg);
+
+    }
+
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+
+            translate3d(
+                40px,
+                115vh,
+                0
+            )
+
+            rotate(20deg);
+
+    }
+
+}
+
+
+/* =====================================================
+   BRIGHT TWINKLING STARS
+===================================================== */
 
 .twinkle {
+
     position: absolute;
 
     width: var(--size);
@@ -224,28 +299,34 @@ body {
 
     border-radius: 50%;
 
-    background: white;
+    background: #ffffff;
 
     pointer-events: none;
 
     box-shadow:
+
         0 0 4px #ffffff,
-        0 0 8px #ffffff,
-        0 0 15px #cba7ff,
-        0 0 24px #9d62ff;
+
+        0 0 9px #ffffff,
+
+        0 0 16px #d9bcff,
+
+        0 0 28px #9d63ff;
 
     animation:
+
         twinkleBright
-        var(--twinkle-speed)
+        var(--speed)
         ease-in-out
         forwards;
+
 }
 
 
-/* little cross rays */
+/* horizontal sparkle ray */
 
-.twinkle::before,
-.twinkle::after {
+.twinkle::before {
+
     content: "";
 
     position: absolute;
@@ -253,83 +334,145 @@ body {
     top: 50%;
     left: 50%;
 
+    width: calc(var(--size) * 5);
+    height: 1px;
+
     background:
-        rgba(255,255,255,.95);
+
+        linear-gradient(
+            90deg,
+            transparent,
+            white,
+            transparent
+        );
 
     transform:
-        translate(-50%,-50%);
+
+        translate(
+            -50%,
+            -50%
+        );
+
 }
 
 
-.twinkle::before {
-    width: calc(var(--size) * 4);
-    height: 1px;
-}
-
+/* vertical sparkle ray */
 
 .twinkle::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
     width: 1px;
-    height: calc(var(--size) * 4);
+    height: calc(var(--size) * 5);
+
+    background:
+
+        linear-gradient(
+            180deg,
+            transparent,
+            white,
+            transparent
+        );
+
+    transform:
+
+        translate(
+            -50%,
+            -50%
+        );
+
 }
 
 
 @keyframes twinkleBright {
 
     0% {
+
         opacity: 0;
 
         transform:
+
             scale(.1)
+
             rotate(0deg);
+
     }
 
-    30% {
+
+    25% {
+
         opacity: 1;
 
         transform:
+
             scale(1.5)
+
             rotate(45deg);
+
     }
 
-    55% {
-        opacity: .35;
+
+    50% {
+
+        opacity: .25;
 
         transform:
-            scale(.7)
+
+            scale(.6)
+
             rotate(90deg);
+
     }
+
 
     75% {
+
         opacity: 1;
 
         transform:
-            scale(1.25)
+
+            scale(1.3)
+
             rotate(135deg);
+
     }
 
+
     100% {
+
         opacity: 0;
 
         transform:
+
             scale(.1)
+
             rotate(180deg);
+
     }
+
 }
 
 
-/* =========================================
+/* =====================================================
    SHOOTING STARS
-========================================= */
+===================================================== */
 
 .shooting-star {
+
     position: absolute;
 
-    width: 100px;
+    width: 120px;
     height: 2px;
 
     pointer-events: none;
 
     background:
+
         linear-gradient(
             90deg,
             transparent,
@@ -337,24 +480,32 @@ body {
             #ffffff
         );
 
-    border-radius: 100%;
+    border-radius: 50%;
 
     filter:
-        drop-shadow(0 0 6px #ffffff)
-        drop-shadow(0 0 12px #ad76ff);
 
-    transform:
-        rotate(-25deg);
+        drop-shadow(
+            0 0 5px
+            white
+        )
+
+        drop-shadow(
+            0 0 12px
+            #b67cff
+        );
 
     animation:
-        shootingStar
+
+        shootStar
         1.4s
         ease-out
         forwards;
+
 }
 
 
 .shooting-star::after {
+
     content: "";
 
     position: absolute;
@@ -370,40 +521,63 @@ body {
     background: white;
 
     box-shadow:
+
         0 0 8px white,
+
         0 0 18px #c89cff;
+
 }
 
 
-@keyframes shootingStar {
+@keyframes shootStar {
 
     0% {
+
         opacity: 0;
 
         transform:
-            translate(-100px,-100px)
+
+            translate(
+                -100px,
+                -100px
+            )
+
             rotate(-25deg);
+
     }
+
 
     15% {
+
         opacity: 1;
+
     }
 
+
     100% {
+
         opacity: 0;
 
         transform:
-            translate(450px,280px)
+
+            translate(
+                500px,
+                300px
+            )
+
             rotate(-25deg);
+
     }
+
 }
 
 
-/* =========================================
+/* =====================================================
    STELLA CONTAINER
-========================================= */
+===================================================== */
 
 #stella-container {
+
     position: fixed;
 
     right: 15px;
@@ -415,14 +589,16 @@ body {
     z-index: 999999;
 
     pointer-events: none;
+
 }
 
 
-/* =========================================
+/* =====================================================
    STELLA
-========================================= */
+===================================================== */
 
 #stella {
+
     position: absolute;
 
     right: 0;
@@ -438,11 +614,13 @@ body {
     pointer-events: auto;
 
     user-select: none;
+
     -webkit-user-drag: none;
 
     opacity: 0;
 
     filter:
+
         drop-shadow(
             0 6px 10px
             rgba(0,0,0,.25)
@@ -454,164 +632,271 @@ body {
         );
 
     animation:
+
         stellaFlyIn
         3.5s
         cubic-bezier(.22,.8,.3,1)
         forwards,
 
-        floatStella
+        stellaFloat
         3s
         ease-in-out
         3.5s
         infinite;
+
 }
 
 
-/* =========================================
+/* =====================================================
    ORIGINAL STELLA FLY-IN
-========================================= */
+===================================================== */
 
 @keyframes stellaFlyIn {
 
     0% {
+
         opacity: 0;
 
         transform:
-            translate(-110vw,-35vh)
+
+            translate(
+                -110vw,
+                -35vh
+            )
+
             rotate(-20deg)
+
             scale(.35);
+
     }
+
 
     10% {
+
         opacity: 1;
+
     }
+
 
     30% {
+
         transform:
-            translate(-75vw,-18vh)
+
+            translate(
+                -75vw,
+                -18vh
+            )
+
             rotate(12deg)
+
             scale(.55);
+
     }
+
 
     50% {
+
         transform:
-            translate(-45vw,-30vh)
+
+            translate(
+                -45vw,
+                -30vh
+            )
+
             rotate(-8deg)
-            scale(.7);
+
+            scale(.70);
+
     }
+
 
     70% {
+
         transform:
-            translate(-220px,-100px)
+
+            translate(
+                -220px,
+                -100px
+            )
+
             rotate(10deg)
+
             scale(.88);
+
     }
+
 
     85% {
+
         transform:
-            translate(-60px,-40px)
+
+            translate(
+                -60px,
+                -40px
+            )
+
             rotate(-5deg)
+
             scale(1.05);
+
     }
+
 
     93% {
+
         transform:
-            translate(8px,-12px)
+
+            translate(
+                8px,
+                -12px
+            )
+
             rotate(3deg)
+
             scale(.97);
+
     }
 
+
     100% {
+
         opacity: 1;
 
         transform:
-            translate(0,0)
+
+            translate(
+                0,
+                0
+            )
+
             rotate(0deg)
+
             scale(1);
+
     }
+
 }
 
 
-/* =========================================
+/* =====================================================
    STELLA FLOAT
-========================================= */
+===================================================== */
 
-@keyframes floatStella {
+@keyframes stellaFloat {
 
     0%,
     100% {
+
         transform:
+
             translateY(0)
+
             rotate(-2deg);
+
     }
 
+
     50% {
+
         transform:
+
             translateY(-18px)
+
             rotate(2deg);
+
     }
+
 }
 
 
-/* =========================================
-   STELLA CLICK
-========================================= */
+/* =====================================================
+   STELLA CLICK REACTION
+===================================================== */
 
 #stella.clicked {
+
     opacity: 1;
 
     animation:
+
         stellaClick
         .65s
         ease,
 
-        floatStella
+        stellaFloat
         3s
         ease-in-out
         .65s
         infinite;
+
 }
 
 
 @keyframes stellaClick {
 
     0% {
+
         transform:
+
             scale(1)
-            rotate(0);
+
+            rotate(0deg);
+
     }
+
 
     25% {
+
         transform:
-            scale(1.1)
+
+            scale(1.10)
+
             rotate(-8deg);
+
     }
+
 
     50% {
+
         transform:
+
             scale(1.12)
+
             rotate(8deg);
+
     }
+
 
     75% {
+
         transform:
+
             scale(1.06)
+
             rotate(-4deg);
+
     }
 
+
     100% {
+
         transform:
+
             scale(1)
-            rotate(0);
+
+            rotate(0deg);
+
     }
+
 }
 
 
-/* =========================================
+/* =====================================================
    STELLA SPEECH BUBBLE
-========================================= */
+===================================================== */
 
 #stella-bubble {
+
     position: absolute;
 
     right: 175px;
@@ -624,6 +909,7 @@ body {
     box-sizing: border-box;
 
     background:
+
         linear-gradient(
             135deg,
             #ffffff,
@@ -633,61 +919,73 @@ body {
     color: #35155d;
 
     border:
+
         3px solid
         #9254de;
 
     border-radius: 22px;
 
     font-family:
+
         Arial,
         Helvetica,
         sans-serif;
 
     font-size: 15px;
+
     font-weight: bold;
+
+    line-height: 1.35;
 
     text-align: center;
 
     box-shadow:
+
         0 6px 20px
         rgba(0,0,0,.20),
 
         0 0 18px
-        rgba(151,75,255,.4);
+        rgba(151,75,255,.40);
 
     opacity: 0;
 
     transform:
+
         translateY(10px)
+
         scale(.7);
 
     transition:
+
         opacity .3s ease,
+
         transform .3s ease;
 
     pointer-events: none;
+
 }
 
 
 #stella-bubble.show {
+
     opacity: 1;
 
     transform:
+
         translateY(0)
+
         scale(1);
+
 }
 
 
-/* =========================================
-   STELLA CLICK MAGIC
-========================================= */
+/* =====================================================
+   STELLA MAGIC PARTICLES
+===================================================== */
 
 .stella-magic {
+
     position: fixed;
-
-    z-index: 9999999;
-
-    pointer-events: none;
 
     width: 7px;
     height: 7px;
@@ -696,101 +994,143 @@ body {
 
     background: white;
 
+    pointer-events: none;
+
+    z-index: 9999999;
+
     box-shadow:
+
         0 0 7px white,
+
         0 0 15px #d9b5ff,
+
         0 0 25px #9b5cff;
 
     animation:
-        stellaMagic
+
+        stellaMagicBurst
         1.5s
         ease-out
         forwards;
+
 }
 
 
-@keyframes stellaMagic {
+@keyframes stellaMagicBurst {
 
     0% {
+
         opacity: 1;
 
         transform:
+
             translate(0,0)
+
             scale(.5);
+
     }
 
+
     100% {
+
         opacity: 0;
 
         transform:
+
             translate(
                 var(--x),
                 var(--y)
             )
+
             scale(1.7);
+
     }
+
 }
 
 
-/* =========================================
+/* =====================================================
    MOBILE
-========================================= */
+===================================================== */
 
 @media (max-width: 600px) {
 
     #stella-container {
+
         width: 190px;
         height: 240px;
 
         right: 5px;
         bottom: 5px;
+
     }
+
 
     #stella {
+
         width: 170px;
+
     }
 
+
     #stella-bubble {
+
         width: 175px;
 
         right: 105px;
         bottom: 160px;
 
+        padding: 11px;
+
         font-size: 12px;
+
     }
 
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- MAGIC EFFECTS -->
+<!-- =====================================================
+     MAGICAL SKY
+===================================================== -->
 
 <div id="magic-sky"></div>
 
 
-<!-- STELLA -->
+<!-- =====================================================
+     STELLA
+===================================================== -->
 
 <div id="stella-container">
+
 
     <div id="stella-bubble">
 
         <span id="stella-text">
+
             Welcome to Moonlight Designs! ✨
+
         </span>
 
     </div>
 
 
     <img
+
         id="stella"
-        src="https://500blueprint.github.io/Stella-fly/Stella.PNG"
-        alt="Stella"
+
+        src="./Stella.PNG"
+
+        alt="Stella - Moonlight Designs"
+
     >
+
 
 </div>
 
@@ -801,29 +1141,40 @@ body {
 (function () {
 
 
-/* =========================================
+/* =====================================================
    ELEMENTS
-========================================= */
+===================================================== */
 
 const sky =
-    document.getElementById("magic-sky");
+    document.getElementById(
+        "magic-sky"
+    );
+
 
 const stella =
-    document.getElementById("stella");
+    document.getElementById(
+        "stella"
+    );
+
 
 const bubble =
-    document.getElementById("stella-bubble");
+    document.getElementById(
+        "stella-bubble"
+    );
 
-const text =
-    document.getElementById("stella-text");
+
+const stellaText =
+    document.getElementById(
+        "stella-text"
+    );
 
 
 let bubbleTimer;
 
 
-/* =========================================
+/* =====================================================
    STELLA MESSAGES
-========================================= */
+===================================================== */
 
 const messages = [
 
@@ -841,7 +1192,9 @@ const messages = [
 
     "New designs are waiting! 💫",
 
-    "Thanks for visiting Moonlight Designs! 💜"
+    "Creativity looks good on you! 💜",
+
+    "Thanks for visiting Moonlight Designs! 🌙✨"
 
 ];
 
@@ -849,26 +1202,35 @@ const messages = [
 let messageIndex = 0;
 
 
-/* =========================================
-   STELLA TALK
-========================================= */
+/* =====================================================
+   STELLA TALKS
+===================================================== */
 
 function talk() {
 
-    text.textContent =
-        messages[messageIndex];
+
+    stellaText.textContent =
+        messages[
+            messageIndex
+        ];
 
 
     messageIndex =
-        (messageIndex + 1)
+        (
+            messageIndex + 1
+        )
         %
         messages.length;
 
 
-    bubble.classList.add("show");
+    bubble.classList.add(
+        "show"
+    );
 
 
-    clearTimeout(bubbleTimer);
+    clearTimeout(
+        bubbleTimer
+    );
 
 
     bubbleTimer =
@@ -880,50 +1242,83 @@ function talk() {
                 );
 
             },
+
             4200
         );
+
 }
 
 
-/* =========================================
+/* =====================================================
    CREATE FALLING STAR
-========================================= */
+===================================================== */
 
 function createStar() {
 
+
     const star =
-        document.createElement("span");
+        document.createElement(
+            "span"
+        );
 
 
     star.className =
         "falling-star";
 
 
+    star.textContent =
+        "✦";
+
+
     star.style.left =
-        Math.random() * 100 + "vw";
+        (
+            Math.random()
+            *
+            100
+        )
+        +
+        "vw";
 
 
     star.style.setProperty(
+
         "--size",
+
         (
-            10 +
-            Math.random() * 17
-        ) + "px"
+            10
+            +
+            Math.random()
+            *
+            18
+        )
+        +
+        "px"
+
     );
 
 
     const speed =
-        6 +
-        Math.random() * 7;
+        6
+        +
+        Math.random()
+        *
+        7;
 
 
     star.style.setProperty(
+
         "--speed",
-        speed + "s"
+
+        speed
+        +
+        "s"
+
     );
 
 
-    sky.appendChild(star);
+    sky.appendChild(
+        star
+    );
 
 
     setTimeout(
@@ -932,19 +1327,26 @@ function createStar() {
             star.remove();
 
         },
-        speed * 1000
+
+        speed
+        *
+        1000
     );
+
 }
 
 
-/* =========================================
-   CREATE FALLING MOON
-========================================= */
+/* =====================================================
+   CREATE MOON
+===================================================== */
 
 function createMoon() {
 
+
     const moon =
-        document.createElement("span");
+        document.createElement(
+            "span"
+        );
 
 
     moon.className =
@@ -952,30 +1354,54 @@ function createMoon() {
 
 
     moon.style.left =
-        Math.random() * 100 + "vw";
+        (
+            Math.random()
+            *
+            100
+        )
+        +
+        "vw";
 
 
     moon.style.setProperty(
+
         "--size",
+
         (
-            15 +
-            Math.random() * 17
-        ) + "px"
+            15
+            +
+            Math.random()
+            *
+            18
+        )
+        +
+        "px"
+
     );
 
 
     const speed =
-        9 +
-        Math.random() * 7;
+        9
+        +
+        Math.random()
+        *
+        7;
 
 
     moon.style.setProperty(
+
         "--speed",
-        speed + "s"
+
+        speed
+        +
+        "s"
+
     );
 
 
-    sky.appendChild(moon);
+    sky.appendChild(
+        moon
+    );
 
 
     setTimeout(
@@ -984,19 +1410,26 @@ function createMoon() {
             moon.remove();
 
         },
-        speed * 1000
+
+        speed
+        *
+        1000
     );
+
 }
 
 
-/* =========================================
+/* =====================================================
    CREATE TWINKLE
-========================================= */
+===================================================== */
 
 function createTwinkle() {
 
+
     const sparkle =
-        document.createElement("span");
+        document.createElement(
+            "span"
+        );
 
 
     sparkle.className =
@@ -1004,32 +1437,64 @@ function createTwinkle() {
 
 
     sparkle.style.left =
-        Math.random() * 100 + "vw";
+        (
+            Math.random()
+            *
+            100
+        )
+        +
+        "vw";
 
 
     sparkle.style.top =
-        Math.random() * 100 + "vh";
+        (
+            Math.random()
+            *
+            100
+        )
+        +
+        "vh";
 
 
     sparkle.style.setProperty(
+
         "--size",
+
         (
-            2 +
-            Math.random() * 4
-        ) + "px"
+            2
+            +
+            Math.random()
+            *
+            4
+        )
+        +
+        "px"
+
     );
+
+
+    const speed =
+        1.3
+        +
+        Math.random()
+        *
+        1.8;
 
 
     sparkle.style.setProperty(
-        "--twinkle-speed",
-        (
-            1.3 +
-            Math.random() * 1.8
-        ) + "s"
+
+        "--speed",
+
+        speed
+        +
+        "s"
+
     );
 
 
-    sky.appendChild(sparkle);
+    sky.appendChild(
+        sparkle
+    );
 
 
     setTimeout(
@@ -1038,56 +1503,76 @@ function createTwinkle() {
             sparkle.remove();
 
         },
+
         3500
     );
+
 }
 
 
-/* =========================================
+/* =====================================================
    SHOOTING STAR
-========================================= */
+===================================================== */
 
 function createShootingStar() {
 
-    const star =
-        document.createElement("span");
+
+    const shootingStar =
+        document.createElement(
+            "span"
+        );
 
 
-    star.className =
+    shootingStar.className =
         "shooting-star";
 
 
-    star.style.left =
+    shootingStar.style.left =
         (
-            Math.random() * 60
-        ) + "vw";
+            Math.random()
+            *
+            55
+        )
+        +
+        "vw";
 
 
-    star.style.top =
+    shootingStar.style.top =
         (
-            Math.random() * 40
-        ) + "vh";
+            Math.random()
+            *
+            35
+        )
+        +
+        "vh";
 
 
-    sky.appendChild(star);
+    sky.appendChild(
+        shootingStar
+    );
 
 
     setTimeout(
         function () {
 
-            star.remove();
+            shootingStar.remove();
 
         },
+
         1700
     );
+
 }
 
 
-/* =========================================
+/* =====================================================
    STELLA MAGIC BURST
-========================================= */
+===================================================== */
 
-function stellaBurst() {
+function stellaBurst(
+    amount
+) {
+
 
     const rect =
         stella.getBoundingClientRect();
@@ -1095,12 +1580,15 @@ function stellaBurst() {
 
     for (
         let i = 0;
-        i < 18;
+        i < amount;
         i++
     ) {
 
+
         const sparkle =
-            document.createElement("span");
+            document.createElement(
+                "span"
+            );
 
 
         sparkle.className =
@@ -1109,33 +1597,55 @@ function stellaBurst() {
 
         sparkle.style.left =
             (
-                rect.left +
+                rect.left
+                +
                 rect.width / 2
-            ) + "px";
+            )
+            +
+            "px";
 
 
         sparkle.style.top =
             (
-                rect.top +
+                rect.top
+                +
                 rect.height / 2
-            ) + "px";
+            )
+            +
+            "px";
 
 
         sparkle.style.setProperty(
+
             "--x",
+
             (
-                Math.random() * 260 -
-                130
-            ) + "px"
+                Math.random()
+                *
+                280
+                -
+                140
+            )
+            +
+            "px"
+
         );
 
 
         sparkle.style.setProperty(
+
             "--y",
+
             (
-                Math.random() * 240 -
-                150
-            ) + "px"
+                Math.random()
+                *
+                260
+                -
+                170
+            )
+            +
+            "px"
+
         );
 
 
@@ -1150,19 +1660,23 @@ function stellaBurst() {
                 sparkle.remove();
 
             },
+
             1700
         );
+
     }
+
 }
 
 
-/* =========================================
+/* =====================================================
    CLICK STELLA
-========================================= */
+===================================================== */
 
 stella.addEventListener(
     "click",
     function () {
+
 
         stella.classList.remove(
             "clicked"
@@ -1179,28 +1693,38 @@ stella.addEventListener(
 
         talk();
 
-        stellaBurst();
+
+        stellaBurst(
+            20
+        );
 
     }
 );
 
 
-/* =========================================
+/* =====================================================
    STELLA ARRIVES
-========================================= */
+===================================================== */
 
 window.addEventListener(
     "load",
     function () {
 
+
         setTimeout(
             function () {
 
+
                 talk();
 
-                stellaBurst();
+
+                stellaBurst(
+                    20
+                );
+
 
             },
+
             3900
         );
 
@@ -1208,11 +1732,12 @@ window.addEventListener(
 );
 
 
-/* =========================================
-   CONTINUOUS MAGIC
-========================================= */
+/* =====================================================
+   CONTINUOUS CELESTIAL MAGIC
+===================================================== */
 
-/* lots of falling stars */
+
+/* Falling stars */
 
 setInterval(
     createStar,
@@ -1220,7 +1745,7 @@ setInterval(
 );
 
 
-/* moons are less frequent */
+/* Falling moons */
 
 setInterval(
     createMoon,
@@ -1228,7 +1753,7 @@ setInterval(
 );
 
 
-/* bright random twinkles */
+/* Bright twinkles */
 
 setInterval(
     createTwinkle,
@@ -1236,7 +1761,7 @@ setInterval(
 );
 
 
-/* occasional shooting star */
+/* Shooting stars */
 
 setInterval(
     createShootingStar,
@@ -1244,15 +1769,16 @@ setInterval(
 );
 
 
-/* =========================================
-   PUT MAGIC ON SCREEN IMMEDIATELY
-========================================= */
+/* =====================================================
+   INITIAL MAGIC
+===================================================== */
 
 for (
     let i = 0;
     i < 18;
     i++
 ) {
+
 
     setTimeout(
         createTwinkle,
@@ -1268,6 +1794,7 @@ for (
     i++
 ) {
 
+
     setTimeout(
         createStar,
         i * 180
@@ -1282,6 +1809,7 @@ for (
     i++
 ) {
 
+
     setTimeout(
         createMoon,
         i * 700
@@ -1293,6 +1821,7 @@ for (
 })();
 
 </script>
+
 
 </body>
 </html>
