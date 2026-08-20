@@ -1,423 +1,550 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Moonlight Designs - Stella</title>
+<title>Stella | Moonlight Designs</title>
 
 <style>
 
-/* ================================
-   STELLA CONTAINER
-================================ */
+/* ==========================================
+   PAGE
+========================================== */
 
-#stella-wrap {
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+
+    background: transparent;
+
+    overflow: hidden;
+}
+
+
+/* ==========================================
+   STELLA AREA
+========================================== */
+
+#stella-area {
+
     position: fixed;
+
     right: 20px;
     bottom: 15px;
-    width: 260px;
-    height: 300px;
+
+    width: 280px;
+    height: 330px;
+
     z-index: 999999;
+
     pointer-events: none;
 }
 
 
-/* ================================
-   STELLA IMAGE
-================================ */
+/* ==========================================
+   STELLA
+========================================== */
 
 #stella {
+
     position: absolute;
+
     right: 0;
     bottom: 0;
 
-    width: 230px;
-    max-width: 45vw;
+    width: 240px;
     height: auto;
 
-    cursor: pointer;
+    max-width: none;
+
     pointer-events: auto;
 
-    transform-origin: 50% 70%;
+    cursor: pointer;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    opacity: 0;
 
     filter:
-        drop-shadow(0 8px 10px rgba(0,0,0,.25))
-        drop-shadow(0 0 14px rgba(160,75,255,.55));
+        drop-shadow(0 8px 12px rgba(0,0,0,.25))
+        drop-shadow(0 0 12px rgba(152,72,255,.55));
 
     animation:
-        flyIn 3.2s cubic-bezier(.2,.8,.3,1) forwards,
-        floatStella 3s ease-in-out 3.2s infinite;
+        stellaFlyIn 3.2s cubic-bezier(.2,.8,.3,1) forwards,
+        stellaFloat 3.4s ease-in-out 3.2s infinite;
 }
 
 
-/* ================================
-   FLY INTO WEBSITE
-================================ */
+/* ==========================================
+   FLY INTO SCREEN
+========================================== */
 
-@keyframes flyIn {
+@keyframes stellaFlyIn {
 
     0% {
-        transform:
-            translate(-120vw,-45vh)
-            rotate(-25deg)
-            scale(.35);
 
         opacity: 0;
-    }
 
-    20% {
-        opacity: 1;
-    }
-
-    45% {
         transform:
-            translate(-60vw,-25vh)
-            rotate(12deg)
-            scale(.65);
-    }
+            translate(-120vw,-40vh)
+            rotate(-25deg)
+            scale(.3);
 
-    70% {
-        transform:
-            translate(-180px,-100px)
-            rotate(-8deg)
-            scale(.9);
-    }
-
-    88% {
-        transform:
-            translate(-25px,-30px)
-            rotate(5deg)
-            scale(1.08);
-    }
-
-    100% {
-        transform:
-            translate(0,0)
-            rotate(0)
-            scale(1);
-
-        opacity: 1;
-    }
-}
-
-
-/* ================================
-   IDLE FLOAT
-================================ */
-
-@keyframes floatStella {
-
-    0%,100% {
-        transform:
-            translateY(0)
-            rotate(-2deg)
-            scale(1);
-    }
-
-    50% {
-        transform:
-            translateY(-18px)
-            rotate(2deg)
-            scale(1.02);
-    }
-}
-
-
-/* ================================
-   CLICK DANCE
-================================ */
-
-#stella.dance {
-    animation: stellaDance .9s ease !important;
-}
-
-
-@keyframes stellaDance {
-
-    0% {
-        transform:
-            rotate(0)
-            scale(1);
     }
 
     15% {
-        transform:
-            rotate(-12deg)
-            scale(1.08);
+
+        opacity: 1;
+
     }
 
-    30% {
+    40% {
+
         transform:
-            rotate(12deg)
-            scale(1.1);
+            translate(-60vw,-20vh)
+            rotate(15deg)
+            scale(.55);
+
     }
 
-    45% {
+    65% {
+
         transform:
-            translateY(-25px)
+            translate(-180px,-100px)
             rotate(-8deg)
+            scale(.85);
+
+    }
+
+    82% {
+
+        transform:
+            translate(-40px,-35px)
+            rotate(6deg)
             scale(1.08);
+
     }
 
-    60% {
-        transform:
-            translateY(-5px)
-            rotate(10deg)
-            scale(1.1);
-    }
+    92% {
 
-    75% {
         transform:
-            translateY(-18px)
-            rotate(-5deg)
-            scale(1.06);
+            translate(5px,-12px)
+            rotate(-3deg)
+            scale(.97);
+
     }
 
     100% {
+
+        opacity: 1;
+
         transform:
-            translateY(0)
-            rotate(0)
+            translate(0,0)
+            rotate(0deg)
             scale(1);
+
     }
+
 }
 
 
-/* ================================
+/* ==========================================
+   FLOAT AFTER LANDING
+========================================== */
+
+@keyframes stellaFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0)
+            rotate(-1deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-18px)
+            rotate(2deg);
+
+    }
+
+}
+
+
+/* ==========================================
+   CLICK WIGGLE
+========================================== */
+
+#stella.wiggle {
+
+    animation:
+        stellaWiggle .7s ease,
+        stellaFloat 3.4s ease-in-out .7s infinite;
+
+    opacity: 1;
+}
+
+
+@keyframes stellaWiggle {
+
+    0% {
+
+        transform:
+            rotate(0)
+            scale(1);
+
+    }
+
+    20% {
+
+        transform:
+            rotate(-12deg)
+            scale(1.08);
+
+    }
+
+    40% {
+
+        transform:
+            rotate(12deg)
+            scale(1.1);
+
+    }
+
+    60% {
+
+        transform:
+            rotate(-8deg)
+            scale(1.06);
+
+    }
+
+    80% {
+
+        transform:
+            rotate(7deg)
+            scale(1.03);
+
+    }
+
+    100% {
+
+        transform:
+            rotate(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* ==========================================
    SPEECH BUBBLE
-================================ */
+========================================== */
 
 #stella-bubble {
+
     position: absolute;
 
-    right: 165px;
-    bottom: 215px;
+    right: 150px;
+    bottom: 220px;
 
     width: 240px;
 
     padding: 16px 18px;
 
+    box-sizing: border-box;
+
     background:
         linear-gradient(
             135deg,
             #ffffff,
-            #f7eaff
+            #f7edff
         );
 
-    border: 3px solid #9b52df;
-    border-radius: 24px;
+    color: #321558;
 
-    color: #31145c;
+    border:
+        3px solid #9557e8;
+
+    border-radius: 24px;
 
     font-family:
         Arial,
+        Helvetica,
         sans-serif;
 
     font-size: 16px;
+
     font-weight: 800;
 
-    text-align: center;
     line-height: 1.35;
 
+    text-align: center;
+
     box-shadow:
-        0 8px 25px rgba(0,0,0,.22),
-        0 0 20px rgba(167,80,255,.35);
+        0 8px 24px rgba(0,0,0,.22),
+        0 0 18px rgba(151,70,255,.35);
 
     opacity: 0;
 
     transform:
-        translateY(20px)
-        scale(.75);
+        translateY(15px)
+        scale(.7);
 
     transition:
-        .35s ease;
+        opacity .35s ease,
+        transform .35s ease;
 
     pointer-events: none;
+
 }
 
 
+/* SHOW BUBBLE */
+
 #stella-bubble.show {
+
     opacity: 1;
 
     transform:
         translateY(0)
         scale(1);
+
 }
 
 
-/* Speech bubble arrow */
+/* SPEECH BUBBLE TAIL */
 
 #stella-bubble::after {
+
     content: "";
 
     position: absolute;
 
-    right: 25px;
+    right: 28px;
     bottom: -15px;
 
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 26px;
 
-    background: #f7eaff;
+    background: #f7edff;
 
-    border-right: 3px solid #9b52df;
-    border-bottom: 3px solid #9b52df;
+    border-right:
+        3px solid #9557e8;
 
-    transform: rotate(45deg);
+    border-bottom:
+        3px solid #9557e8;
+
+    transform:
+        rotate(45deg);
+
 }
 
 
-/* ================================
+/* ==========================================
    SPARKLES
-================================ */
+========================================== */
 
-.stella-sparkle {
-    position: absolute;
+.sparkle {
 
-    font-size: 20px;
+    position: fixed;
+
+    z-index: 9999999;
 
     pointer-events: none;
 
+    font-size: 22px;
+
     animation:
-        sparkleMagic 1.8s ease-out forwards;
+        sparkleUp 1.7s ease-out forwards;
+
 }
 
 
-@keyframes sparkleMagic {
+@keyframes sparkleUp {
 
     0% {
+
         opacity: 0;
 
         transform:
             translateY(20px)
             scale(.2)
-            rotate(0);
+            rotate(0deg);
+
     }
 
     20% {
+
         opacity: 1;
+
     }
 
     100% {
+
         opacity: 0;
 
         transform:
-            translateY(-120px)
+            translateY(-110px)
             scale(1.4)
             rotate(180deg);
+
     }
+
 }
 
 
-/* ================================
-   LITTLE HEARTS
-================================ */
+/* ==========================================
+   HEART BURST
+========================================== */
 
-.stella-heart {
+.heart {
+
     position: fixed;
-
-    pointer-events: none;
 
     z-index: 9999999;
 
-    font-size: 22px;
+    pointer-events: none;
+
+    font-size: 25px;
 
     animation:
-        heartFly 1.7s ease-out forwards;
+        heartBurst 1.5s ease-out forwards;
+
 }
 
 
-@keyframes heartFly {
+@keyframes heartBurst {
 
     0% {
+
         opacity: 1;
 
         transform:
-            translateY(0)
-            scale(.5);
+            translate(0,0)
+            scale(.4);
+
     }
 
     100% {
+
         opacity: 0;
 
         transform:
-            translateY(-130px)
-            scale(1.5)
-            rotate(20deg);
+            translate(
+                var(--moveX),
+                -120px
+            )
+            scale(1.4);
+
     }
+
 }
 
 
-/* ================================
+/* ==========================================
    MOBILE
-================================ */
+========================================== */
 
-@media(max-width:600px) {
+@media (max-width: 600px) {
 
-    #stella-wrap {
-        width: 170px;
-        height: 210px;
+    #stella-area {
+
+        width: 180px;
+        height: 225px;
 
         right: 5px;
         bottom: 5px;
+
     }
 
 
     #stella {
-        width: 155px;
-        max-width: 42vw;
+
+        width: 160px;
+
     }
 
 
     #stella-bubble {
-        width: 180px;
+
+        width: 190px;
 
         right: 105px;
-        bottom: 145px;
+        bottom: 150px;
 
-        padding: 12px;
+        padding: 13px;
 
         font-size: 13px;
+
     }
 
 }
 
 
-/* Accessibility */
+/* ==========================================
+   REDUCED MOTION
+========================================== */
 
-@media(prefers-reduced-motion:reduce) {
+@media (prefers-reduced-motion: reduce) {
 
     #stella {
+
+        opacity: 1;
+
         animation: none;
+
     }
 
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- ===============================
+<!-- ==========================================
      STELLA
-================================ -->
+========================================== -->
 
-<div id="stella-wrap">
+<div id="stella-area">
+
+
+    <!-- SPEECH BUBBLE -->
 
     <div id="stella-bubble">
-        <span id="stella-text">
+
+        <span id="stella-message">
+
             Welcome to Moonlight Designs! ✨
+
         </span>
+
     </div>
 
 
+    <!-- STELLA IMAGE -->
+
     <img
-        src="stella.png"
         id="stella"
-        alt="Stella the Moonlight Designs owl"
+        src="https://500blueprint.github.io/Stella-fly/Stella.PNG"
+        alt="Stella - Moonlight Designs"
     >
+
 
 </div>
 
@@ -425,178 +552,224 @@
 
 <script>
 
-/* ===============================
-   STELLA JAVASCRIPT
-================================ */
+(function () {
+
+
+/* ==========================================
+   GET ELEMENTS
+========================================== */
 
 const stella =
     document.getElementById("stella");
 
-const stellaWrap =
-    document.getElementById("stella-wrap");
 
 const bubble =
     document.getElementById("stella-bubble");
 
-const stellaText =
-    document.getElementById("stella-text");
+
+const message =
+    document.getElementById("stella-message");
 
 
-/* ===============================
-   STELLA'S SAYINGS
-================================ */
+let bubbleTimer;
+
+
+/* ==========================================
+   STELLA'S MESSAGES
+========================================== */
 
 const messages = [
 
     "Welcome to Moonlight Designs! ✨",
 
-    "Hey beautiful! I'm Stella! 🦉💜",
+    "Hi! I'm Stella! 🦉💜",
 
     "Come see what's new! 🌙",
 
-    "Psst... the shop is calling you! 👀",
+    "Psst... have you checked the shop? 👀",
 
     "Let's make something magical! ✨",
 
-    "Have you seen the newest designs? 💜",
+    "New designs are waiting for you! 💫",
 
-    "You're looking fabulous today! ⭐",
+    "Don't forget to check the newest drops! ⭐",
 
-    "Go ahead... treat yourself! 😂💜",
+    "Need some clipart? I know a place! 😉",
 
-    "Need clipart? I know a place! 🦉",
+    "You deserve something pretty today! 💜",
 
-    "Moonlight magic is happening! 🌙✨"
+    "Thanks for visiting Moonlight Designs! 🌙"
 
 ];
 
 
-let currentMessage = 0;
-
-let bubbleTimer;
+let messageNumber = 0;
 
 
-/* ===============================
+/* ==========================================
    STELLA TALKS
-================================ */
+========================================== */
 
 function stellaTalk() {
 
-    stellaText.textContent =
-        messages[currentMessage];
+
+    message.textContent =
+        messages[messageNumber];
 
 
-    currentMessage++;
+    messageNumber++;
 
-    if(currentMessage >= messages.length) {
-        currentMessage = 0;
+
+    if (
+        messageNumber >=
+        messages.length
+    ) {
+
+        messageNumber = 0;
+
     }
 
 
-    bubble.classList.add("show");
+    bubble.classList.add(
+        "show"
+    );
 
 
-    clearTimeout(bubbleTimer);
+    clearTimeout(
+        bubbleTimer
+    );
 
 
     bubbleTimer =
-        setTimeout(function() {
+        setTimeout(function () {
 
-            bubble.classList.remove("show");
+            bubble.classList.remove(
+                "show"
+            );
 
         }, 5000);
 
 }
 
 
-/* ===============================
-   SPARKLES
-================================ */
+/* ==========================================
+   MAKE SPARKLES
+========================================== */
 
-function makeSparkles(amount = 12) {
+function makeSparkles(amount) {
+
 
     const symbols = [
+
         "✨",
         "⭐",
-        "🌙",
         "💜",
+        "🌙",
         "✦"
+
     ];
 
 
-    for(let i = 0; i < amount; i++) {
+    const rect =
+        stella.getBoundingClientRect();
+
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
 
         const sparkle =
-            document.createElement("span");
+            document.createElement(
+                "span"
+            );
 
 
         sparkle.className =
-            "stella-sparkle";
+            "sparkle";
 
 
         sparkle.textContent =
             symbols[
                 Math.floor(
-                    Math.random() *
-                    symbols.length
+                    Math.random()
+                    * symbols.length
                 )
             ];
 
 
         sparkle.style.left =
             (
-                20 +
-                Math.random() * 200
-            ) + "px";
+                rect.left
+                +
+                Math.random()
+                * rect.width
+            )
+            + "px";
 
 
         sparkle.style.top =
             (
-                50 +
-                Math.random() * 180
-            ) + "px";
+                rect.top
+                +
+                Math.random()
+                * rect.height
+            )
+            + "px";
 
 
         sparkle.style.animationDelay =
             (
-                Math.random() * .5
-            ) + "s";
+                Math.random()
+                * .4
+            )
+            + "s";
 
 
-        stellaWrap.appendChild(
+        document.body.appendChild(
             sparkle
         );
 
 
-        setTimeout(function() {
+        setTimeout(function () {
 
             sparkle.remove();
 
-        }, 2400);
+        }, 2200);
 
     }
 
 }
 
 
-/* ===============================
-   HEART EXPLOSION
-================================ */
+/* ==========================================
+   HEARTS
+========================================== */
 
 function makeHearts() {
+
 
     const rect =
         stella.getBoundingClientRect();
 
 
-    for(let i = 0; i < 7; i++) {
+    for (
+        let i = 0;
+        i < 6;
+        i++
+    ) {
+
 
         const heart =
-            document.createElement("span");
+            document.createElement(
+                "span"
+            );
 
 
         heart.className =
-            "stella-heart";
+            "heart";
 
 
         heart.textContent =
@@ -607,24 +780,42 @@ function makeHearts() {
 
         heart.style.left =
             (
-                rect.left +
-                rect.width / 2 +
-                Math.random() * 80 -
-                40
-            ) + "px";
+                rect.left
+                +
+                rect.width / 2
+            )
+            + "px";
 
 
         heart.style.top =
             (
-                rect.top +
+                rect.top
+                +
                 rect.height / 2
-            ) + "px";
+            )
+            + "px";
+
+
+        heart.style.setProperty(
+
+            "--moveX",
+
+            (
+                Math.random()
+                * 160
+                - 80
+            )
+            + "px"
+
+        );
 
 
         heart.style.animationDelay =
             (
-                Math.random() * .25
-            ) + "s";
+                Math.random()
+                * .25
+            )
+            + "s";
 
 
         document.body.appendChild(
@@ -632,100 +823,159 @@ function makeHearts() {
         );
 
 
-        setTimeout(function() {
+        setTimeout(function () {
 
             heart.remove();
 
-        }, 2200);
+        }, 1900);
 
     }
 
 }
 
 
-/* ===============================
+/* ==========================================
    CLICK STELLA
-================================ */
+========================================== */
 
 stella.addEventListener(
     "click",
-    function() {
+    function () {
 
-        /* restart dance */
+
+        /* Reset wiggle */
 
         stella.classList.remove(
-            "dance"
+            "wiggle"
         );
 
 
         void stella.offsetWidth;
 
 
+        /* Wiggle */
+
         stella.classList.add(
-            "dance"
+            "wiggle"
         );
 
 
+        /* Talk */
+
         stellaTalk();
 
-        makeSparkles(16);
+
+        /* Magic */
+
+        makeSparkles(14);
 
         makeHearts();
-
-
-        /* return to floating */
-
-        setTimeout(function() {
-
-            stella.classList.remove(
-                "dance"
-            );
-
-            stella.style.animation =
-                "floatStella 3s ease-in-out infinite";
-
-        }, 950);
 
     }
 );
 
 
-/* ===============================
-   FIRST WELCOME
-================================ */
+/* ==========================================
+   IMAGE LOADED
+========================================== */
 
-setTimeout(function() {
-
-    stellaTalk();
-
-    makeSparkles(18);
-
-}, 3400);
+stella.addEventListener(
+    "load",
+    function () {
 
 
-/* ===============================
-   RANDOM MAGIC
-================================ */
-
-setInterval(function() {
-
-    makeSparkles(5);
-
-}, 7000);
+        console.log(
+            "Stella loaded successfully!"
+        );
 
 
-/* ===============================
-   STELLA RANDOMLY TALKS
-================================ */
+        /* Wait until fly-in finishes */
 
-setInterval(function() {
+        setTimeout(function () {
 
-    stellaTalk();
+            stellaTalk();
 
-}, 22000);
+            makeSparkles(12);
 
+        }, 3400);
+
+    }
+);
+
+
+/* ==========================================
+   IMAGE ERROR
+========================================== */
+
+stella.addEventListener(
+    "error",
+    function () {
+
+
+        console.error(
+            "Stella.PNG could not load."
+        );
+
+
+        console.error(
+            "Expected URL:"
+        );
+
+
+        console.error(
+            "https://500blueprint.github.io/Stella-fly/Stella.PNG"
+        );
+
+    }
+);
+
+
+/* ==========================================
+   RANDOM IDLE SPARKLES
+========================================== */
+
+setInterval(function () {
+
+
+    if (
+        stella.complete
+        &&
+        stella.naturalWidth > 0
+    ) {
+
+        makeSparkles(5);
+
+    }
+
+
+}, 9000);
+
+
+/* ==========================================
+   OCCASIONAL STELLA MESSAGE
+========================================== */
+
+setInterval(function () {
+
+
+    if (
+        !bubble.classList.contains(
+            "show"
+        )
+    ) {
+
+        stellaTalk();
+
+    }
+
+
+}, 30000);
+
+
+})();
 
 </script>
+
 
 </body>
 </html>
